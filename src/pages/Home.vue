@@ -25,12 +25,12 @@
         </div>
       </header>
     </div>
-    <div class="Bg">
+    <div class="cover">
       <!-- Hero content: will be in the middle -->
       <div class="hero-body">
         <div class="container has-text-centered">
           <h1 class="title is-1">Hello</h1>
-          <h2 class="subtitle">I'am {{ fullname }}</h2>
+          <h2 class="subtitle">I'm {{ fullname }}</h2>
         </div>
       </div>
     </div>
@@ -107,7 +107,7 @@
     padding-bottom: 13px;
   }
   
-  .Bg {
+  .cover {
     width: 100%;
     height: 400px;
     display: flex;
