@@ -18,18 +18,6 @@ export default {
   },
   data () {
     return {
-      options: {
-        segmentShowStroke: false
-      },
-      backgroundColor: [
-        '#1fc8db',
-        '#fce473',
-        '#42afe3',
-        '#ed6c63',
-        '#97cd76'
-      ],
-      labels_2: ['April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
-      data_2: [1, 9, 3, 4, 5, 6, 7, 8, 2].map(e => (Math.sin(e) * 25) + 55),
       labels_3: ['May', 'June', 'Jule', 'August', 'September', 'October', 'November'],
       data_3: [
         [65, 59, 90, 81, 56, 55, 40],
@@ -48,16 +36,6 @@ export default {
     }
   },
   computed: {
-    waveData () {
-      return {
-        labels: this.labels_2,
-        datasets: [{
-          label: 'My Radar',
-          data: this.data_2,
-          backgroundColor: this.backgroundColor[0]
-        }]
-      }
-    },
     seriesData () {
       let data = {
         labels: this.labels_3
@@ -73,12 +51,6 @@ export default {
       })
       return data
     }
-  },
-  created () {
-    setInterval(() => {
-      // https://vuejs.org/guide/list.html#Mutation-Methods
-      this.data_2.unshift(this.data_2.pop())
-    }, 377)
   }
 }
 </script>
