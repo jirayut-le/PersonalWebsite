@@ -1,8 +1,16 @@
 <template lang= "html">
-    <div class="section columns" id="data">
+    <div class="columns" id="data">
         <div class="column is-2"></div>
         <div class="column is-8">
-            <div>
+            <div class="field has-addons">
+              <p class="control" v-for= "skill in skills">
+                <a class="button is-medium skills ">
+                    <i :class="skill.class"></i>
+                  <span>{{ skill.data }}</span>
+                </a>
+              </p>
+            </div>
+            <div id="chart">
                 <chart :type="'radar'" :data="seriesData" :options="options_3"></chart>
             </div>
         </div>
@@ -18,7 +26,12 @@ export default {
   },
   data () {
     return {
-      labels_3: ['May', 'June', 'Jule', 'August', 'September', 'October', 'November'],
+      skills: [
+        { data: 'Programming', class: 'fa fa-align-left' },
+        { data: 'Framework', class: 'fa fa-align-center' },
+        { data: 'Design', class: 'fa fa-align-right' }
+      ],
+      labels_3: ['Java', 'Javascript', 'Html', 'CSS', 'C++', 'October', 'November'],
       data_3: [
         [65, 59, 90, 81, 56, 55, 40],
         [28, 48, 40, 19, 88, 27, 45]
@@ -56,4 +69,15 @@ export default {
 </script>
 
 <style scoped>
+#chart {
+  padding: 30px;
+}
+
+.button.skills {
+  padding: 25px 70px;
+}
+
+.field.has-addons {
+  justify-content: center;
+}
 </style>

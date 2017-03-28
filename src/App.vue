@@ -2,7 +2,7 @@
   <div id="app">
     <Home></Home>
     <transition name="component-fade" mode="out-in">
-       <router-view></router-view>
+       <router-view class="section"></router-view>
     </transition>
     <Footer></Footer>
   </div>
@@ -21,9 +21,6 @@ export default {
 </script>
 
 <style>
-#data {
-  margin-top : 10px;
-}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

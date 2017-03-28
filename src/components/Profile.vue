@@ -1,5 +1,5 @@
 <template lang= "html">
-    <section class="section">
+    <section>
         <div class="columns" id="data">
           <div class="column is-2 is-hidden-mobile"></div>
             <div class="column is-8 box">
