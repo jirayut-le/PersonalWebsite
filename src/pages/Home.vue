@@ -6,7 +6,7 @@
         <div class="container">
           <div class="nav-left">
             <a class="nav-item">
-              <span class="title is-5">{{ fullname }}</span>
+              <router-link to="/" v-on:click="swapComponent('')"class="title is-5">{{ fullname }}</router-link>
             </a>
           </div>
           <span class="nav-toggle">
