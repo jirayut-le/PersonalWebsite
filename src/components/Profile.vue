@@ -5,8 +5,8 @@
             <div class="column is-8 box">
               <div class="columns">
                 <div class="container column is-5">
-                  <figure class="image is-1by1">
-                       <img class="profile" src="../assets/MyProfile.jpg">
+                  <figure class="image is-1by1" v-on:click="openModalImage()">
+                       <img class="profile"  src="../assets/MyProfile.jpg">
                   </figure>
                 </div>
               <div class="column is-2">
@@ -27,6 +27,17 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import ImageModal from './ImageModal'
+const ImageModalComponent = Vue.extend(ImageModal)
+const openImageModal = (propsData = {
+  visible: true
+}) => {
+  return new ImageModalComponent({
+    el: document.createElement('div'),
+    propsData
+  })
+}
 export default {
   data () {
     return {
@@ -51,7 +62,14 @@ export default {
           { data: 'Buddhist' },
           { data: 'Photographer, Graphic designer' },
           { data: 'Swimming' }
-      ]
+      ],
+      imageModal: null
+    }
+  },
+  methods: {
+    openModalImage () {
+      const imageModal = this.imageModal || (this.imageModal = openImageModal())
+      imageModal.$children[0].active()
     }
   }
 }

@@ -2,17 +2,19 @@
     <div class="columns" id="data">
         <div class="column is-2"></div>
         <div class="column is-8">
-            <div class="field has-addons">
-              <p class="control" v-for= "skill in skills">
-                <a class="button is-medium skills ">
-                    <i :class="skill.class"></i>
-                  <span>{{ skill.data }}</span>
-                </a>
-              </p>
+          <div class="columns">
+              <aside class="menu column is-3">
+                <p class="menu-label">
+                  Skills
+                </p>
+                <ul class="menu-list" v-for="skill in skills">
+                  <li><a>{{ skill.data }}</a></li>
+                </ul>
+              </aside>
+            <div id="chart" class="column is-9">
+                <chart :type="'polarArea'" :data="pieData" :options="options"></chart>
             </div>
-            <div id="chart">
-                <chart :type="'radar'" :data="seriesData" :options="options_3"></chart>
-            </div>
+          </div>
         </div>
         <div class="column is-2"></div>
     </div>
@@ -26,43 +28,37 @@ export default {
   },
   data () {
     return {
+      programing: ['Java', 'Javascript', 'C++', 'Html', 'CSS'],
+      frameworks: ['Vue.js', 'Bulma'],
+      designs: ['Photoshop', 'Illustrator', 'Sketch'],
+      labels: ['Java', 'Javascript', 'C++', 'Html', 'CSS'],
+      data: [70, 60, 40, 60, 50],
       skills: [
-        { data: 'Programming', class: 'fa fa-align-left' },
-        { data: 'Framework', class: 'fa fa-align-center' },
-        { data: 'Design', class: 'fa fa-align-right' }
+        { data: 'Programming' },
+        { data: 'Framework' },
+        { data: 'Design' }
       ],
-      labels_3: ['Java', 'Javascript', 'Html', 'CSS', 'C++', 'October', 'November'],
-      data_3: [
-        [65, 59, 90, 81, 56, 55, 40],
-        [28, 48, 40, 19, 88, 27, 45]
-      ],
-      options_3: {
-        tooltips: {
-          mode: 'label'
-        }
+      options: {
+        segmentShowStroke: false
       },
-      backgroundColor_3: [
-        'rgba(31, 200, 219, 1)',
-        'rgba(151, 205, 118, 1)'
-      ],
-      series: ['Product A', 'Product B']
+      backgroundColor: [
+        '#1fc8db',
+        '#fce473',
+        '#42afe3',
+        '#ed6c63',
+        '#97cd76'
+      ]
     }
   },
   computed: {
-    seriesData () {
-      let data = {
-        labels: this.labels_3
+    pieData () {
+      return {
+        labels: this.labels,
+        datasets: [{
+          data: this.data,
+          backgroundColor: this.backgroundColor
+        }]
       }
-      data.datasets = this.series.map((e, i) => {
-        return {
-          data: this.data_3[i],
-          label: this.series[i],
-          borderColor: this.backgroundColor_3[i].replace(/1\)$/, '.5)'),
-          pointBackgroundColor: this.backgroundColor_3[i],
-          backgroundColor: this.backgroundColor_3[i].replace(/1\)$/, '.5)')
-        }
-      })
-      return data
     }
   }
 }
@@ -70,14 +66,7 @@ export default {
 
 <style scoped>
 #chart {
-  padding: 30px;
-}
-
-.button.skills {
-  padding: 25px 70px;
-}
-
-.field.has-addons {
-  justify-content: center;
+  padding: 50px;
+  padding-top: 0px;
 }
 </style>
